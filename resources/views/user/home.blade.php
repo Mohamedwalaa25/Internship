@@ -3,7 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
             <form action="{{URL::current()}}" method="get" class="d-flex justify-content-between mb-4">
-                <x-input name="search" placeholder="Name" class="mx-2" :value="request('name')" />
+                <x-input name="search" placeholder="Search" class="mx-2" :value="request('name')" />
 
                 <button class="brn btn-dark mx-2">Filter</button>
 

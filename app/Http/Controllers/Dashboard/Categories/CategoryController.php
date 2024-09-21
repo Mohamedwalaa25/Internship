@@ -20,6 +20,7 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         $categories = $this->categoryRepository->getAllCategories($request);
+
         return view('dashboard.categories.index', compact('categories'));
     }
 
@@ -31,13 +32,16 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         $data = $request->validated();
+
         $this->categoryRepository->createCategory($data);
         return redirect()->route('categories.index')->with('success', "Category Created!");
     }
 
     public function show($id)
     {
+
         $category = $this->categoryRepository->getCategoryById($id);
+
         return view('dashboard.categories.show', compact('category'));
     }
 
@@ -50,6 +54,7 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, $id)
     {
         $data = $request->validated();
+
         $category = $this->categoryRepository->getCategoryById($id);
         $this->categoryRepository->updateCategory($category, $data);
 
@@ -59,6 +64,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = $this->categoryRepository->getCategoryById($id);
+
         $this->categoryRepository->deleteCategory($category);
 
         return redirect()->route('categories.index')->with('success', "Category Deleted!");
